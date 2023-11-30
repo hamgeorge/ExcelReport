@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>_5.区域重复渲染示例</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Template\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GH.ExcelReport" Version="3.2.6" />
+    <PackageReference Include="GH.ExcelReport.Driver" Version="2.1.0" />
+    <PackageReference Include="GH.ExcelReport.Driver.NPOI" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Template\Template.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>3.1.6</Version>
-    <Description>Excel 报表生成方案。</Description>
+    <Version>3.2.6</Version>
+    <Description>基于源库扩展Region渲染，Excel 报表生成方案。</Description>
     <Copyright>Copyright 2015</Copyright>
     <PackageLicenseUrl>https://github.com/hanzhaoxin/ExcelReport/blob/master/License.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/hanzhaoxin/ExcelReport</PackageProjectUrl>
@@ -11,6 +11,7 @@
     <PackageReleaseNotes>模板问题明确反馈异常。</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageId>GH.ExcelReport</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ExcelReport.Driver" Version="2.0.0" />
+    <PackageReference Include="GH.ExcelReport.Driver" Version="2.1.0" />
   </ItemGroup>
 
 </Project>

@@ -12,7 +12,9 @@ namespace ExcelReport.Driver
         }
 
         int CopyRows(int start, int end);
+        int ReplaceRegion(int startRow,int endRow,int startColum,int endColumn);
 
         int RemoveRows(int start, int end);
+        int ClearRegion(int startRow, int endRow, int startColum, int endColumn);
     }
 }

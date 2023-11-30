@@ -93,5 +93,15 @@ namespace ExcelReport.Driver.CSV
         {
             return this;
         }
+
+        public int ReplaceRegion(int startRow, int endRow, int startColum, int endColumn)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public int ClearRegion(int startRow, int endRow, int startColum, int endColumn)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

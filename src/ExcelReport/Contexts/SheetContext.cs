@@ -49,13 +49,37 @@ namespace ExcelReport.Contexts
             endCell.Value = endCell.GetStringValue().CutStartOf($">[{repeater.Name}]");
             _rowIndexAccumulation.Add(span);
         }
-
+        public void CopyRepeaterTemplateByReplace(Repeater repeater, Action processTemplate)
+        {
+            var startRowIndex = _rowIndexAccumulation.GetCurrentRowIndex(repeater.Start.RowIndex);
+            var endRowIndex = _rowIndexAccumulation.GetCurrentRowIndex(repeater.End.RowIndex);
+            var startColumnIndex = repeater.Start.ColumnIndex;
+            var endColumnIndex = repeater.End.ColumnIndex;
+            //int span = endRowIndex - startRowIndex+1;
+            int span=_sheet.ReplaceRegion(startRowIndex, endRowIndex, startColumnIndex, endColumnIndex);
+            ICell startCell = GetCell(repeater.Start);
+            startCell.Value = startCell.GetStringValue().CutEndOf($"<[{repeater.Name}]");
+            processTemplate();
+            ICell endCell = GetCell(repeater.End);
+            endCell.Value = endCell.GetStringValue().CutStartOf($">[{repeater.Name}]");
+            _rowIndexAccumulation.Add(span);
+        }
         public void RemoveRepeaterTemplate(Repeater repeater)
         {
             var startRowIndex = _rowIndexAccumulation.GetCurrentRowIndex(repeater.Start.RowIndex);
             var endRowIndex = _rowIndexAccumulation.GetCurrentRowIndex(repeater.End.RowIndex);
 
             int span = _sheet.RemoveRows(startRowIndex, endRowIndex);
+            _rowIndexAccumulation.Add(-span);
+        }
+
+        public void RemoveRegionRepeaterTemplate(Repeater repeater)
+        {
+            var startRowIndex = _rowIndexAccumulation.GetCurrentRowIndex(repeater.Start.RowIndex);
+            var endRowIndex = _rowIndexAccumulation.GetCurrentRowIndex(repeater.End.RowIndex);
+            var startColumnIndex = repeater.Start.ColumnIndex;
+            var endColumnIndex = repeater.End.ColumnIndex;
+            int span = _sheet.ClearRegion(startRowIndex, endRowIndex, startColumnIndex, endColumnIndex);
             _rowIndexAccumulation.Add(-span);
         }
     }
