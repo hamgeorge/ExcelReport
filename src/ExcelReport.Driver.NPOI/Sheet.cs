@@ -126,8 +126,8 @@ namespace ExcelReport.Driver.NPOI
                 #endregion
             }
             //获取模板行内的合并区域
-            List<MergedRegionInfo> regionInfoList = NpoiSheet.GetMergedRegionInfos(startRowIndex, endRowIndex, null,
-                null);
+            List<MergedRegionInfo> regionInfoList = NpoiSheet.GetMergedRegionInfos(startRowIndex, endRowIndex, startColumIndex,
+                endColumnIndex);
             //复制合并区域
             foreach (MergedRegionInfo regionInfo in regionInfoList)
             {
@@ -180,7 +180,7 @@ namespace ExcelReport.Driver.NPOI
                         continue;
                     }                   
                     NpoiCell targetCell = sourceRow.GetCell(sourceCell.ColumnIndex);
-                    sourceRow.RemoveCell(targetCell);
+                    targetCell.SetCellValue(string.Empty);
                 }
 
                 #endregion
