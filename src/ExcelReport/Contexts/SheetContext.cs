@@ -72,7 +72,11 @@ namespace ExcelReport.Contexts
             int span = _sheet.RemoveRows(startRowIndex, endRowIndex);
             _rowIndexAccumulation.Add(-span);
         }
-
+        public void ResetAccumulation()
+        {
+            var v = _rowIndexAccumulation.Value;
+            _rowIndexAccumulation.Add(-v);
+        }
         public void RemoveRegionRepeaterTemplate(Repeater repeater)
         {
             var startRowIndex = _rowIndexAccumulation.GetCurrentRowIndex(repeater.Start.RowIndex);

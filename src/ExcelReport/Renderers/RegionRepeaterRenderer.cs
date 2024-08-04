@@ -44,7 +44,7 @@ namespace ExcelReport.Renderers
             {
                 throw new RenderException($"RepeaterRenderer[{repeater.Name}] is empty");
             }
-
+            sheetContext.ResetAccumulation();
             if (!DataSource.IsNull())
             {
                 foreach (var item in DataSource)
@@ -102,7 +102,7 @@ namespace ExcelReport.Renderers
             {
                 throw new RenderException($"RepeaterRenderer[{repeater.Name}] is empty");
             }
-
+            sheetContext.ResetAccumulation();
             var items = DgSetDataSource(dataSource);
             if (!items.IsNull())
             {
